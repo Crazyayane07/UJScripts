@@ -6,7 +6,7 @@ class BaseLevel():
         self.height = self.screen.get_height()
         self.game = game
 
-        self.musicAsset = "assets/music/bensound-scifi.mp3"
+        self.musicAsset = "assets/music/sounds_intro.mp3"
         self.game.musicManager.playMusic(self.musicAsset, 0.2)
 
     def updateLevel(self):

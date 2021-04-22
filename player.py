@@ -8,9 +8,9 @@ class Player(pygame.sprite.Sprite):
         self.game = game
         self.screen = screen
 
-        self.sprite = pygame.Surface((29, 7))
+        self.sprite = pygame.Surface((30, 10))
         self.sprite.fill((255, 0, 0))
-        self.sprite = pygame.image.load("assets/GFX/player.png").convert()
+        self.sprite = pygame.image.load("assets/GFX/belka.png").convert()
         self.rect = self.sprite.get_rect()
 
         self.rect.x = 306

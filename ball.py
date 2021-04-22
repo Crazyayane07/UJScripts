@@ -9,13 +9,16 @@ class Ball(pygame.sprite.Sprite):
         self.player = player
         self.obstacles = obstacles
         self.level = level
-        self.sprite = pygame.Surface((5, 5))
+
+        self.sprite = pygame.Surface((10, 10))
         self.sprite.fill((255, 255, 255))
+        self.sprite = pygame.image.load("assets/GFX/pilka.png").convert()
         self.rect = self.sprite.get_rect()
-        self.velocity = pygame.Vector2(-0.5, 1)
 
         self.rect.x = 306
-        self.rect.y = 100
+        self.rect.y = 390
+
+        self.velocity = pygame.Vector2(-0.5, -2)
 
     def updateBall(self):
         if self.rect.y > self.game.height:
@@ -24,12 +27,12 @@ class Ball(pygame.sprite.Sprite):
             self.velocity = pygame.Vector2(self.velocity.x, abs(self.velocity.y))
         elif self.rect.x < 0:
             self.velocity = pygame.Vector2(self.velocity.x * -1, self.velocity.y)
-        elif self.rect.x > self.game.width-5:
+        elif self.rect.x > self.game.width-10:
             self.velocity = pygame.Vector2(self.velocity.x * -1, self.velocity.y)
         elif self.rect.colliderect(self.player.rect):
-            if(self.player.rect.x + 10 > self.rect.x + 2): # left side
+            if(self.player.rect.x + 10 > self.rect.x + 5): # left side
                 self.velocity = pygame.Vector2(self.velocity.x * 1.5, abs(self.velocity.y) * -1)
-            elif(self.player.rect.x + 19 < self.rect.x + 2): # right side
+            elif(self.player.rect.x + 20 < self.rect.x + 5): # right side
                 self.velocity = pygame.Vector2(self.velocity.x * -1.5, abs(self.velocity.y) * -1)
             else: #center
                 self.velocity = pygame.Vector2(self.velocity.x, abs(self.velocity.y) * -1)
@@ -37,11 +40,11 @@ class Ball(pygame.sprite.Sprite):
         for obstacle in self.obstacles:
             if self.rect.colliderect(obstacle.rect):
                 self.game.scoreManager.addDefaultScore()
-                if (obstacle.rect.x + 15 > self.rect.x + 2):  #left side
+                if (obstacle.rect.x + 10 > self.rect.x + 5):  #left side
                     self.velocity = pygame.Vector2(self.velocity.x * 1.5, self.velocity.y)
                 else:  #right  side
                     self.velocity = pygame.Vector2(self.velocity.x * -1.5, self.velocity.y)
-                if (obstacle.rect.y + 9 < self.rect.y + 2):  #down side
+                if (obstacle.rect.y + 5 < self.rect.y + 5):  #down side
                     self.velocity = pygame.Vector2(self.velocity.x, abs(self.velocity.y) * 1.5)
                 else:  #up side
                     self.velocity = pygame.Vector2(self.velocity.x, abs(self.velocity.y) * -1.5)
@@ -56,9 +59,9 @@ class Ball(pygame.sprite.Sprite):
         self.screen.blit(self.sprite, self.rect)
 
     def LostBall(self):
-        self.velocity = pygame.Vector2(-0.5, 1)
+        self.velocity = pygame.Vector2(-0.5, -2)
         self.rect.x = 306
-        self.rect.y = 100
+        self.rect.y = 390
         self.player.OnLostBall()
 
     def limitVelocity(self):

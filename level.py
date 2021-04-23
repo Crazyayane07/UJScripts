@@ -1,6 +1,5 @@
 import pygame
 
-from abc import abstractmethod
 from baseLevel import BaseLevel
 from ending import EndingLevel
 from player import Player
@@ -53,11 +52,9 @@ class Level(BaseLevel):
             self.game.currentLevel = self.getNextLevel()
             self.game.inputManager.resetIsPressingNextLevelButton()
 
-    @abstractmethod
     def getNextLevel(self):
         return LevelOne(self.screen, self.game)
 
-    @abstractmethod
     def checkIfFinishedLevel(self):
         for obstacle in self.obstacles:
             if obstacle is not None:

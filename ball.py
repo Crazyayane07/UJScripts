@@ -11,7 +11,6 @@ class Ball(pygame.sprite.Sprite):
         self.level = level
 
         self.sprite = pygame.Surface((10, 10))
-        self.sprite.fill((255, 255, 255))
         self.sprite = pygame.image.load("assets/GFX/pilka.png").convert()
         self.rect = self.sprite.get_rect()
 

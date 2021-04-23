@@ -50,6 +50,7 @@ class Game:
 
     def showLevelOne(self):
         self.scoreManager.reset()
+        self.lifeManager.reset()
         self.currentLevel = LevelOne(self.screen, self)
 
     def showEndingLevel(self):

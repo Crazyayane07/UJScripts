@@ -8,7 +8,6 @@ class Obstacle(pygame.sprite.Sprite):
         self.screen = screen
 
         self.sprite = pygame.Surface((20, 10))
-        self.sprite.fill((255, 0, 0))
         self.sprite = pygame.image.load("assets/GFX/klocek.png").convert()
         self.rect = self.sprite.get_rect()
 

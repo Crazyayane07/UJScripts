@@ -26,7 +26,7 @@ class Player(pygame.sprite.Sprite):
             if self.rect.x - 3 > -3:
                 self.rect.x -= 3
         if keys[pygame.K_RIGHT]:
-            if self.rect.x - 3 < 612:
+            if self.rect.x - 3 < 605:
                 self.rect.x += 3
 
     def OnLostBall(self):
